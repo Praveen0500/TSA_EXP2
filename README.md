@@ -46,41 +46,63 @@ poly_regressor.fit(X_poly, y)
 y_pred_poly = poly_regressor.predict(X_poly)
 
 plt.figure(figsize=(35, 5))
-plt.subplot(1,3,1)
-plt.plot(data['Date'], data['Min'], label='Price')
-plt.xlabel('Date')
-plt.ylabel('price')
-plt.title('Cost Of Onion')
-plt.grid(True)
 
-plt.figure(figsize=(35, 5))
-plt.subplot(1,3,2)
-plt.plot(data['Date'], y, label='Price')
-plt.plot(data['Date'], y_pred_linear, color='red',linestyle='--', label='Linear Trend')
+# First subplot for the first 100 data points of 'Min' price
+plt.subplot(1, 3, 1)
+plt.plot(data['Date'].head(100), data['Min'].head(100), label='Price')
 plt.xlabel('Date')
 plt.ylabel('Price')
-plt.title('Linear Trend Estimation for Onion Price')
-plt.legend()
+plt.title('Cost of Onion (First 100 Data Points)')
 plt.grid(True)
+plt.xticks(rotation=45)  # Rotate the x-axis labels for better readability
+plt.tight_layout()  # Adjust layout for better spacing
 
-plt.figure(figsize=(35, 5))
-plt.subplot(1,3,3)
-plt.plot(data['Date'], y, label='Actual Price')
-plt.plot(data['Date'], y_pred_poly, color='green',linestyle='--', label='Polynomial Trend (Degree 2)')
-plt.xlabel('Date')
-plt.ylabel('Price')
-plt.title('Polynomial Trend Estimation for Onion Price')
-plt.legend()
-plt.grid(True)
+# Show the plot
 plt.show()
+
+plt.figure(figsize=(35, 5))
+
+# Second subplot for the first 100 data points (actual price and linear trend)
+plt.subplot(1, 3, 2)
+plt.plot(data['Date'].head(100), y[:100], label='Price')
+plt.plot(data['Date'].head(100), y_pred_linear[:100], color='red', linestyle='--', label='Linear Trend')
+plt.xlabel('Date')
+plt.ylabel('Price')
+plt.title('Linear Trend Estimation for Onion Price (First 100 Data Points)')
+plt.legend()
+plt.grid(True)
+plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
+plt.tight_layout()  # Adjust layout for proper spacing
+
+# Show the plot
+plt.show()
+
+pplt.figure(figsize=(35, 5))
+
+# Third subplot for the first 100 data points (actual price and polynomial trend)
+plt.subplot(1, 3, 3)
+plt.plot(data['Date'].head(100), y[:100], label='Actual Price')
+plt.plot(data['Date'].head(100), y_pred_poly[:100], color='green', linestyle='--', label='Polynomial Trend (Degree 2)')
+plt.xlabel('Date')
+plt.ylabel('Price')
+plt.title('Polynomial Trend Estimation for Onion Price (First 100 Data Points)')
+plt.legend()
+plt.grid(True)
+plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
+plt.tight_layout()  # Adjust layout for proper spacing
+
+# Show the plot
+plt.show()
+
 ```
 ### OUTPUT
 #### A - LINEAR TREND ESTIMATION
-![image](https://github.com/user-attachments/assets/803eae35-24fc-4033-8bad-30f0e3313aa5)
+![Untitled](https://github.com/user-attachments/assets/e3fda039-83cc-4498-92a5-a858f4520d68)
 
 
 #### B- POLYNOMIAL TREND ESTIMATION
-![image](https://github.com/user-attachments/assets/472f425e-ef71-427a-8af9-9e64f03e7202)
+![Untitled](https://github.com/user-attachments/assets/e644e931-1d72-4784-b691-a179ed67b7fd)
+
 
 
 ### RESULT:
